@@ -1,0 +1,24 @@
+<article 
+  class="bg-[#0C0C0C] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-[#481E14] hover:border-[#F2613F]"
+>
+  <a [routerLink]="['/movies', movie.id]" class="block">
+    <img 
+      [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" 
+      [alt]="movie.title + ' poster'"
+      class="w-full aspect-[2/3] object-cover hover:opacity-90 transition-opacity"
+      loading="lazy"
+    >
+    <div class="p-3">
+      <h3 class="font-semibold truncate text-[#F2613F] hover:text-[#9B3922] transition-colors">
+        {{ movie.title }}
+      </h3>
+      <div class="flex justify-between items-center mt-2 text-sm">
+        <span class="text-gray-300">{{ movie.release_date | date:'yyyy' }}</span>
+        <span class="bg-[#481E14] text-[#F2613F] px-2 py-1 rounded-full text-xs font-medium flex items-center">
+          {{ movie.vote_average | number:'1.1-1' }}
+          <span class="ml-1">★</span>
+        </span>
+      </div>
+    </div>
+  </a>
+</article>

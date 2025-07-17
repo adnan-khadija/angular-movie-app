@@ -1,0 +1,91 @@
+@if (isLoading) {
+  <div class="min-h-screen flex items-center justify-center bg-[#0C0C0C]">
+    <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#F2613F]"></div>
+  </div>
+} @else {
+  <div class="min-h-screen bg-[#0C0C0C] text-white">
+    <!-- Backdrop -->
+    <div class="relative h-96 w-full">
+      <img 
+        [src]="'https://image.tmdb.org/t/p/original' + media.backdrop_path" 
+        [alt]="getTitle() + ' backdrop'"
+        class="w-full h-full object-cover"
+      >
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/70 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 p-8">
+        <h1 class="text-4xl font-bold mb-2 text-[#F2613F]">{{ getTitle() }}</h1>
+        <div class="flex items-center space-x-4 mb-4">
+          <span class="bg-[#F2613F] text-white px-3 py-1 rounded-full text-sm">
+            {{ media.vote_average | number:'1.1-1' }}
+          </span>
+          <span>{{ getReleaseDate() | date:'yyyy' }}</span>
+          <span>{{ getRuntime() }}</span>
+          @for (genre of media.genres; track genre.id) {
+            <span class="bg-[#481E14] px-2 py-1 rounded-full text-xs">{{ genre.name }}</span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Left Column -->
+        <div class="md:w-1/3 lg:w-1/4">
+          <img 
+            [src]="'https://image.tmdb.org/t/p/w500' + media.poster_path" 
+            [alt]="getTitle() + ' poster'"
+            class="rounded-lg shadow-lg w-full border border-[#481E14]"
+          >
+        </div>
+
+        <!-- Right Column -->
+        <div class="md:w-2/3 lg:w-3/4">
+          @if (media.tagline) {
+            <p class="text-xl italic text-[#F2613F] mb-4">"{{ media.tagline }}"</p>
+          }
+          
+          <h2 class="text-2xl font-bold mb-4 text-[#F2613F]">Synopsis</h2>
+          <p class="text-gray-300 mb-6">{{ media.overview }}</p>
+
+          <!-- Trailer -->
+          @if (videoUrl) {
+            <div class="mb-8">
+              <h2 class="text-2xl font-bold mb-4 text-[#F2613F]">Bande-annonce</h2>
+              <div class="aspect-w-16 aspect-h-9">
+                <iframe 
+                  [src]="videoUrl"
+                  class="w-full h-96 rounded-lg border border-[#481E14]"
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          }
+
+          <!-- Additional Info -->
+          <div class="bg-[#0C0C0C] rounded-lg p-6 border border-[#481E14]">
+            <h2 class="text-2xl font-bold mb-4 text-[#F2613F]">Informations</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300">
+              <div>
+                <h3 class="font-semibold">Statut</h3>
+                <p>{{ media.status }}</p>
+              </div>
+              @if (isMovie) {
+                <div>
+                  <h3 class="font-semibold">Date de sortie</h3>
+                  <p>{{ media.release_date | date:'longDate' }}</p>
+                </div>
+              } @else {
+                <div>
+                  <h3 class="font-semibold">Première diffusion</h3>
+                  <p>{{ media.first_air_date | date:'longDate' }}</p>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

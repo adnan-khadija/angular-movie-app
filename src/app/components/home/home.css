@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  min-height: calc(100vh - 200px); /* Adjust based on header/footer height */
+}
+
+.container {
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}

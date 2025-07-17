@@ -1,0 +1,14 @@
+.container {
+  max-width: 1200px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .backdrop-info {
+    padding: 1rem;
+  }
+  
+  .media-title {
+    font-size: 2rem;
+  }
+}
