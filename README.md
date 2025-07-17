@@ -5,11 +5,15 @@ CineFinder is a modern Angular web application that allows users to search and b
 ## 📸 Preview
 
 <img width="1872" height="890" alt="image" src="https://github.com/user-attachments/assets/254ad07e-ffc2-4a09-a3d2-a50d438709f6" />
+
 <img width="1872" height="890" alt="image" src="https://github.com/user-attachments/assets/68b199e5-81da-469b-a2d6-1719485e7f5b" />
+
 <img width="1872" height="890" alt="image" src="https://github.com/user-attachments/assets/b3184bd0-5a46-47e0-9949-78572367afb1" />
+
 ![Uploading image.png…]()
 ![Uploading image.png…]()
 ![Uploading image.png…]()
+
 
 
 
